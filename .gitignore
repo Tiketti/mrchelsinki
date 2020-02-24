@@ -1,5 +1,12 @@
 server/tmp/
 
+# environment variables as managed by direnv
+.envrc
+
+# The meaning of this file:
+# https://cloud.google.com/docs/authentication/getting-started#auth-cloud-implicit-nodejs
+.gcp-credentials.json
+
 # Logs
 logs
 *.log
