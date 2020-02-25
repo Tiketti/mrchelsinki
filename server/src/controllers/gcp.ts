@@ -38,7 +38,7 @@ const gcpController = {
 
       return h.response(message).code(201);
     } catch (err) {
-      console.error("ERROR:", err);
+      console.error("ERROR:", err.message);
 
       return h.response(err.message).code(500);
     }

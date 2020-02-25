@@ -16,13 +16,13 @@ const init = async () => {
   });
 
   server.route({
-    path: `${basePath}/gcp/list`,
+    path: `${basePath}/storage/list`,
     method: "GET",
     handler: gcpController.listBuckets
   });
 
   server.route({
-    path: `${basePath}/gcp/create`,
+    path: `${basePath}/storage/create`,
     method: "POST",
     handler: gcpController.createBucket
   });
