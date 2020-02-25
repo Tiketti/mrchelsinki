@@ -1,7 +1,10 @@
+const { Storage } = require('@google-cloud/storage');
 import * as Hapi from 'hapi';
 import * as fs from 'fs';
 import * as uuid from 'uuid';
 const path = require('path');
+
+const bucketName = process.env.UPLOAD_BUCKET_NAME || 'mrc-helsinki-photos';
 
 interface FileUploaderOption {
   dest: string;
@@ -31,6 +34,19 @@ const fileOptions: FileUploaderOption = {
   fileFilter: imageFilter,
 };
 
+const uploadFileToStorage = async (fileName: string) => {
+  const storage = new Storage();
+
+  const uploadResult = await storage.bucket(bucketName).upload(fileName, {
+    gzip: true,
+    metadata: { cacheControl: 'public, max-age=31536000' },
+  });
+
+  console.log('uploadResult: ', uploadResult);
+
+  return uploadResult;
+};
+
 const uploader = (file: any, options: FileUploaderOption) => {
   if (!file) throw new Error('no file(s)');
 
@@ -44,7 +60,7 @@ const uploader = (file: any, options: FileUploaderOption) => {
   const fileStream = fs.createWriteStream(path);
 
   return new Promise<FileDetails>((resolve, reject) => {
-    file.on('error', function(err) {
+    file.on('error', err => {
       reject(err);
     });
 
@@ -75,6 +91,8 @@ const uploadController = {
     const data = request.payload;
     const file = data['file'];
     const fileDetails = await uploader(file, fileOptions);
+
+    await uploadFileToStorage(fileDetails.path);
 
     return h.response(fileDetails).code(200);
   },

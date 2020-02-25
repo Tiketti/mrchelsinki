@@ -34,7 +34,8 @@ const gcpController = {
       });
 
       const message = `Bucket with name ${bucket?.name} created`;
-      console.log(message);
+
+      await bucket.makePublic({ includeFiles: true });
 
       return h.response(message).code(201);
     } catch (err) {
