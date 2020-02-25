@@ -1,7 +1,7 @@
-import * as Hapi from "hapi";
-import * as fs from "fs";
-import * as uuid from "uuid";
-const path = require("path");
+import * as Hapi from 'hapi';
+import * as fs from 'fs';
+import * as uuid from 'uuid';
+const path = require('path');
 
 interface FileUploaderOption {
   dest: string;
@@ -27,15 +27,15 @@ const imageFilter = function(fileName: string) {
 };
 
 const fileOptions: FileUploaderOption = {
-  dest: path.join(__dirname, "/../../tmp/"),
-  fileFilter: imageFilter
+  dest: path.join(__dirname, '/../../tmp/'),
+  fileFilter: imageFilter,
 };
 
 const uploader = (file: any, options: FileUploaderOption) => {
-  if (!file) throw new Error("no file(s)");
+  if (!file) throw new Error('no file(s)');
 
   if (options.fileFilter && !options.fileFilter(file.hapi.filename)) {
-    throw new Error("type not allowed");
+    throw new Error('type not allowed');
   }
 
   const originalname = file.hapi.filename;
@@ -44,13 +44,13 @@ const uploader = (file: any, options: FileUploaderOption) => {
   const fileStream = fs.createWriteStream(path);
 
   return new Promise<FileDetails>((resolve, reject) => {
-    file.on("error", function(err) {
+    file.on('error', function(err) {
       reject(err);
     });
 
     file.pipe(fileStream);
 
-    file.on("end", err => {
+    file.on('end', err => {
       if (err) {
         throw new Error();
       }
@@ -59,10 +59,10 @@ const uploader = (file: any, options: FileUploaderOption) => {
         fieldname: file.hapi.name,
         originalname,
         filename,
-        mimetype: file.hapi.headers["content-type"],
+        mimetype: file.hapi.headers['content-type'],
         destination: `${options.dest}`,
         path,
-        size: fs.statSync(path).size
+        size: fs.statSync(path).size,
       };
 
       resolve(fileDetails);
@@ -73,11 +73,11 @@ const uploader = (file: any, options: FileUploaderOption) => {
 const uploadController = {
   upload: async (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
     const data = request.payload;
-    const file = data["file"];
+    const file = data['file'];
     const fileDetails = await uploader(file, fileOptions);
 
     return h.response(fileDetails).code(200);
-  }
+  },
 };
 
 export { uploadController };
