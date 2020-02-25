@@ -1,3 +1,5 @@
+(Reported 2020-02-25)
+
 # 2020-02-25
 
 3 hours: Upload photos to GCP bucket; Make buckets public by default
