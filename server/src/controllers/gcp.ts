@@ -2,6 +2,21 @@ import * as Hapi from 'hapi';
 const { Storage } = require('@google-cloud/storage');
 
 const gcpController = {
+  listBucketContents: async (
+    request: Hapi.Request,
+    h: Hapi.ResponseToolkit
+  ) => {
+    const storage = new Storage();
+    const bucketName = request.params.bucket;
+
+    try {
+      const [files] = await storage.bucket(bucketName).getFiles();
+
+      return h.response(files.map(file => file.name)).code(200);
+    } catch (err) {
+      return h.response(err.message).code(500);
+    }
+  },
   listBuckets: async (_req: Hapi.Request, h: Hapi.ResponseToolkit) => {
     const storage = new Storage();
 

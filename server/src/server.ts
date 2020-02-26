@@ -28,6 +28,12 @@ const init = async () => {
   });
 
   server.route({
+    path: `${basePath}/storage/{bucket}/list`,
+    method: 'GET',
+    handler: gcpController.listBucketContents,
+  });
+
+  server.route({
     path: `${basePath}/upload`,
     method: 'POST',
     options: {

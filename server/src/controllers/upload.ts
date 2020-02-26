@@ -54,9 +54,7 @@ const uploader = (file: any, options: FileUploaderOption) => {
     throw new Error('type not allowed');
   }
 
-  const originalname = file.hapi.filename;
-  const filename = uuid.v1();
-  const path = `${options.dest}${filename}`;
+  const path = `${options.dest}${file.hapi.filename}`;
   const fileStream = fs.createWriteStream(path);
 
   return new Promise<FileDetails>((resolve, reject) => {
@@ -73,8 +71,8 @@ const uploader = (file: any, options: FileUploaderOption) => {
 
       const fileDetails: FileDetails = {
         fieldname: file.hapi.name,
-        originalname,
-        filename,
+        originalname: file.hapi.filename,
+        filename: file.hapi.filename,
         mimetype: file.hapi.headers['content-type'],
         destination: `${options.dest}`,
         path,
