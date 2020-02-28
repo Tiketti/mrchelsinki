@@ -12,7 +12,14 @@ const gcpController = {
     try {
       const [files] = await storage.bucket(bucketName).getFiles();
 
-      return h.response(files.map(file => file.name)).code(200);
+      return h
+        .response(
+          files.map(
+            file =>
+              `https://${file.storage.apiEndpoint}/${file.bucket.name}/${file.metadata.name}`
+          )
+        )
+        .code(200);
     } catch (err) {
       return h.response(err.message).code(500);
     }

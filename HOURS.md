@@ -1,3 +1,7 @@
+# 2020-02-28
+
+1 hours: Test and adjust file listing endpoint response
+
 # 2020-02-26
 
 0.5 hours: Add file listing endpoint
