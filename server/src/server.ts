@@ -5,7 +5,11 @@ import { uploadController } from './controllers/upload';
 const PORT = process.env.SERVER_PORT || 5000;
 const server = new Hapi.Server({
   port: PORT,
-  routes: { cors: { origin: ['*'] } },
+  routes: {
+    cors: {
+      origin: ['*'],
+    },
+  },
 });
 const basePath = '/api';
 
