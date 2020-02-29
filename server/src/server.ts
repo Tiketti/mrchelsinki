@@ -3,7 +3,10 @@ import { gcpController } from './controllers/gcp';
 import { uploadController } from './controllers/upload';
 
 const PORT = process.env.SERVER_PORT || 5000;
-const server = new Hapi.Server({ port: PORT });
+const server = new Hapi.Server({
+  port: PORT,
+  routes: { cors: { origin: ['*'] } },
+});
 const basePath = '/api';
 
 const init = async () => {
