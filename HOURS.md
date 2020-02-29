@@ -1,3 +1,9 @@
+(Reported 2020-02-29)
+
+# 2020-02-29
+
+4 hours: Create initial React client; Implement simple photo gallery functionality
+
 # 2020-02-28
 
 1 hours: Test and adjust file listing endpoint response
