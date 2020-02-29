@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../App.css';
+import '../App.scss';
 
 const baseUrl = process.env.API_URL || 'http://localhost:5000/api';
 

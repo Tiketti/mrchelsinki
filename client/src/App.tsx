@@ -1,13 +1,19 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import PhotoGallery from './components/PhotoGallery';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <nav id="navigation">
+        <ul>
+          <li>Home</li>
+          <li>Upload</li>
+        </ul>
+      </nav>
+      <div className="App-Contents">
         <PhotoGallery bucketName="mrc-helsinki-photos" />
-      </header>
+      </div>
     </div>
   );
 }

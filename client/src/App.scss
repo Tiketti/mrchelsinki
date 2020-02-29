@@ -1,8 +1,13 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
 }
 
-.App-header {
+.App {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.App-Contents {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -11,6 +16,27 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 0.2rem;
+}
+
+nav {
+  font-size: 1.5rem;
+  background-color: darkgrey;
+  color: white;
+  padding: 20px 0;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+  }
+
+  li {
+    list-style-type: none;
+
+    &:not(:first-child) {
+      margin-left: 2rem;
+    }
+  }
 }
 
 img.photo {
