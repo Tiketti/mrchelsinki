@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "echo not implemented && exit 1",
-    "start:dev": "ts-node-dev --inspect --respawn src/server.ts"
+    "start:dev": "ts-node-dev --inspect=9228 --respawn src/server.ts"
   },
   "keywords": [],
   "author": "",
