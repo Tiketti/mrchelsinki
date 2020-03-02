@@ -1,3 +1,7 @@
+# 2020-03-02
+
+5 hours: Add image upload functionality; Do additional small improvements
+
 (Reported 2020-02-29)
 
 # 2020-02-29

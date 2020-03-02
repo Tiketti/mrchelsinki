@@ -46,6 +46,18 @@ nav {
   }
 }
 
+input,
+button {
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+form.file-upload {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+}
+
 img.photo {
   max-width: 80%;
 }
