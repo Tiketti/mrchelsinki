@@ -19,6 +19,7 @@ Fill in the environment variables found in .env.sample file of both [client](./c
 On the roadmap:
 
 - [ ] uploading photos by unauthenticated users
+- [ ] creating a thumbnail on upload
 - [ ] having photos be associated with a specified event
 - [ ] adding photos to a specified event
 - [ ] listing photos from a specified event
@@ -26,3 +27,4 @@ On the roadmap:
 - [ ] having an admin login to:
   - [ ] delete a photo
   - [ ] move a photo to another event
+- [ ] caching loaded photos

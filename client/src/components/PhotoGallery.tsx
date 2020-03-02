@@ -28,7 +28,7 @@ const PhotoGallery = (props: PhotoGalleryProps) => {
   return (
     <>
       <h1>Bucket name: {props.bucketName}</h1>
-      {data.map(url => renderImage(url))}
+      <div>{data.map(url => renderImage(url))}</div>
     </>
   );
 };
