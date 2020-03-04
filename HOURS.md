@@ -1,3 +1,7 @@
+# 2020-03-04
+
+6 hours: Set up Google Cloud Platfrom functions framework (bucket creation scripts, function deployment, documentation etc.)
+
 # 2020-03-02
 
 5 hours: Add image upload functionality; Do additional small improvements

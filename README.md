@@ -12,9 +12,48 @@ npm run start:dev
 
 The server port defaults to port 5000 if nothing else is specified in environment variable `SERVER_PORT`. This means, yo can access backend at `http://localhost:5000/api`
 
+## Starting the client
+
+Start the frontend with:
+
+```sh
+npm start
+```
+
+## The Google Cloud Platform functionality
+
+Install `gcloud` CLI tool. Then, authenticate:
+
+```sh
+gcloud init
+```
+
+Create the input and output buckets.
+
+- make them associated with this project (`-p`)
+- enable uniform access controls (`-b on`)
+- make the buckets publicly accessible (`gsutil iam ..`)
+
+```sh
+gsutil mb -b on -p mrchelsinki -l europe-north1 gs://mrc-helsinki-photos-input
+gsutil mb -b on -p mrchelsinki -l europe-north1 gs://mrc-helsinki-photos-output
+gsutil iam ch allUsers:objectViewer gs://mrc-helsinki-photos-input
+gsutil iam ch allUsers:objectViewer gs://mrc-helsinki-photos-output
+```
+
+Add these bucket names to environment variables under names:
+
+`INPUT_BUCKET_NAME` and `OUTPUT_BUCKET_NAME`
+
+You can deploy a new version of functions with `npm` script:
+
+```sh
+npm run deploy
+```
+
 ## Environment variables
 
-Fill in the environment variables found in .env.sample file of both [client](./client/.env.sample) and [server](./server/.env.sample) and make sure they are readable by NodeJS. I personally prefer [direnv](https://direnv.net/) for easy environment variable management.
+Fill in the environment variables found in .env.sample file in client](./client/.env.sample), [server](./server/.env.sample), and [gcp directories](./gcp/.env.sample) and make sure they are readable by NodeJS. I personally prefer [direnv](https://direnv.net/) for easy environment variable management.
 
 ## TODO
 
@@ -22,6 +61,7 @@ On the roadmap:
 
 - [x] uploading photos by unauthenticated users
 - [ ] creating a thumbnail on upload
+- [ ] caching loaded photos
 - [ ] having photos be associated with a specified event
 - [ ] adding photos to a specified event
 - [ ] listing photos from a specified event
@@ -29,4 +69,3 @@ On the roadmap:
 - [ ] having an admin login to:
   - [ ] delete a photo
   - [ ] move a photo to another event
-- [ ] caching loaded photos

@@ -1,0 +1,25 @@
+{
+  "name": "gcp-functions",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watchs",
+    "deploy": "npm run build && cp package.json ./dist/ && gcloud functions deploy generateThumbnail --source=./dist/ --trigger-bucket=$INPUT_BUCKET_NAME --set-env-vars=INPUT_BUCKET_NAME=$INPUT_BUCKET_NAME,OUTPUT_BUCKET_NAME=$OUTPUT_BUCKET_NAME --runtime=nodejs10 --region=europe-north1"
+  },
+  "keywords": [],
+  "author": "Perttu Haliseva",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "13.7.7",
+    "typescript": "3.8.3"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "4.4.0",
+    "@google-cloud/vision": "1.10.0",
+    "gm": "1.23.1",
+    "path": "0.12.7",
+    "util": "0.12.2"
+  }
+}
