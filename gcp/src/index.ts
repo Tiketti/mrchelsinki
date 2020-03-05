@@ -1,4 +1,4 @@
-import { SubClass, ResizeOption } from "gm";
+import { SubClass, ResizeOption, GravityDirection } from "gm";
 import * as gcs from "@google-cloud/storage";
 import * as path from "path";
 const gm: SubClass = require("gm").subClass({ imageMagick: true });
@@ -9,10 +9,14 @@ const { OUTPUT_BUCKET_NAME = "mrc-helsinki-photos-output" } = process.env;
 
 const resizeAndWriteImage = (filename: string, outputFilename: string) => {
   const resizeOption: ResizeOption = ">";
+  const gravityOption: GravityDirection = "Center";
 
   return new Promise((resolve, reject) => {
     gm(filename)
-      .resize(1024, 1024, resizeOption)
+      .resize(800, 800, resizeOption)
+      .gravity(gravityOption)
+      .crop(800, 800)
+      .quality(60)
       .write(outputFilename, err => {
         if (err) {
           reject(`Error in writing resized image: ${err.message}`);
@@ -32,7 +36,7 @@ exports.generateThumbnail = async (event: any) => {
   }
 
   const tempLocalPath = path.join("/tmp/", file.name);
-  const tempThumbnailLocalPath = path.join("/tmp/", "thumb_", file.name);
+  const tempThumbnailLocalPath = path.join("/tmp/", `thumb_${file.name}`);
 
   try {
     await file.download({ destination: tempLocalPath });

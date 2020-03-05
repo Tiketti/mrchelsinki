@@ -1,6 +1,6 @@
 # 2020-03-05
 
-4.5 hours: Implement end-to-end photo upload - resize - upload to another bucket pipeline.
+5.5 hours: Implement end-to-end photo upload - resize - upload to another bucket pipeline.
 
 # 2020-03-04
 
