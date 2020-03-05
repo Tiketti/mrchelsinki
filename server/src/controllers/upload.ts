@@ -1,8 +1,7 @@
 const { Storage } = require('@google-cloud/storage');
-import * as Hapi from 'hapi';
+import { Request, ResponseToolkit } from 'hapi';
 import * as fs from 'fs';
-import * as uuid from 'uuid';
-const path = require('path');
+import * as path from 'path';
 
 const bucketName = process.env.UPLOAD_BUCKET_NAME || 'mrc-helsinki-photos';
 
@@ -48,7 +47,9 @@ const uploadFileToStorage = async (fileName: string) => {
 };
 
 const uploader = (file: any, options: FileUploaderOption) => {
-  if (!file) throw new Error('no file(s)');
+  if (!file) {
+    throw new Error('no file(s)');
+  }
 
   if (options.fileFilter && !options.fileFilter(file.hapi.filename)) {
     throw new Error('type not allowed');
@@ -58,13 +59,13 @@ const uploader = (file: any, options: FileUploaderOption) => {
   const fileStream = fs.createWriteStream(path);
 
   return new Promise<FileDetails>((resolve, reject) => {
-    file.on('error', err => {
+    file.on('error', (err: Error) => {
       reject(err);
     });
 
     file.pipe(fileStream);
 
-    file.on('end', err => {
+    file.on('end', (err: Error) => {
       if (err) {
         throw new Error();
       }
@@ -85,8 +86,8 @@ const uploader = (file: any, options: FileUploaderOption) => {
 };
 
 const uploadController = {
-  upload: async (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
-    const data = request.payload;
+  upload: async (request: Request, h: ResponseToolkit) => {
+    const data: any = request.payload;
     const file = data['file'];
     const fileDetails = await uploader(file, fileOptions);
 

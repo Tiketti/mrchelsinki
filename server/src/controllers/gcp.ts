@@ -1,16 +1,13 @@
-import * as Hapi from 'hapi';
-const { Storage } = require('@google-cloud/storage');
+import { Request, ResponseToolkit } from 'hapi';
+import * as gcs from '@google-cloud/storage';
 
 const gcpController = {
-  listBucketContents: async (
-    request: Hapi.Request,
-    h: Hapi.ResponseToolkit
-  ) => {
-    const storage = new Storage();
+  listBucketContents: async (request: Request, h: ResponseToolkit) => {
+    const storageClient = new gcs.Storage();
     const bucketName = request.params.bucket;
 
     try {
-      const [files] = await storage.bucket(bucketName).getFiles();
+      const [files] = await storageClient.bucket(bucketName).getFiles();
 
       return h
         .response(
@@ -24,11 +21,11 @@ const gcpController = {
       return h.response(err.message).code(500);
     }
   },
-  listBuckets: async (_req: Hapi.Request, h: Hapi.ResponseToolkit) => {
-    const storage = new Storage();
+  listBuckets: async (_req: Request, h: ResponseToolkit) => {
+    const storageClient = new gcs.Storage();
 
     try {
-      const results = await storage.getBuckets();
+      const results = await storageClient.getBuckets();
       const [buckets] = results;
 
       return h
@@ -42,16 +39,17 @@ const gcpController = {
       return h.response(err.message).code(500);
     }
   },
-  createBucket: async (req: Hapi.Request, h: Hapi.ResponseToolkit) => {
-    const bucketName = req.payload?.['name'];
+  createBucket: async (request: Request, h: ResponseToolkit) => {
+    const data: any = request.payload;
+    const bucketName = data['name'];
 
     if (!bucketName) {
       return h.response('Bucket name is required').code(400);
     }
 
     try {
-      const storage = new Storage();
-      const [bucket] = await storage.createBucket(bucketName, {
+      const storageClient = new gcs.Storage();
+      const [bucket] = await storageClient.createBucket(bucketName, {
         location: 'europe-north1',
       });
 
