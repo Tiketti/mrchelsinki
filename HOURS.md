@@ -1,6 +1,10 @@
+# 2020-03-05
+
+4.5 hours: Implement end-to-end photo upload - resize - upload to another bucket pipeline.
+
 # 2020-03-04
 
-6 hours: Set up Google Cloud Platfrom functions framework (bucket creation scripts, function deployment, documentation etc.)
+6 hours: Set up Google Cloud Platform functions framework (bucket creation scripts, function deployment, documentation etc.)
 
 # 2020-03-02
 

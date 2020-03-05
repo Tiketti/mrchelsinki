@@ -51,6 +51,15 @@ You can deploy a new version of functions with `npm` script:
 npm run deploy
 ```
 
+### Developing GCP functions locally
+
+To develop and run clound functions locally, you need imagemagick and graphicsmagick binaries installed on your dev machine:
+
+```sh
+brew install imagemagick
+brew install graphicsmagick
+```
+
 ## Environment variables
 
 Fill in the environment variables found in .env.sample file in client](./client/.env.sample), [server](./server/.env.sample), and [gcp directories](./gcp/.env.sample) and make sure they are readable by NodeJS. I personally prefer [direnv](https://direnv.net/) for easy environment variable management.
