@@ -1,10 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
 import './App.scss';
+import Photo from './components/Photo';
 import PhotoGallery from './components/PhotoGallery';
 import Upload from './components/Upload';
 
-const bucketName = 'mrc-helsinki-photos';
+const thumbnailBucketname = 'mrc-helsinki-photos-output';
+const thumbnailFilePrefix = 'thumb_';
+const fullSizeBucketname = 'mrc-helsinki-photos-input';
 
 function App() {
   return (
@@ -23,10 +26,17 @@ function App() {
         <div className="App-Contents">
           <Switch>
             <Route exact path="/">
-              <PhotoGallery bucketName={bucketName} />
+              <PhotoGallery
+                thumbnailBucketname={thumbnailBucketname}
+                fullSizeBucketname={fullSizeBucketname}
+                thumbnailFilePrefix={thumbnailFilePrefix}
+              />
+            </Route>
+            <Route path="/photo/:url">
+              <Photo />
             </Route>
             <Route path="/upload">
-              <Upload></Upload>
+              <Upload />
             </Route>
           </Switch>
         </div>

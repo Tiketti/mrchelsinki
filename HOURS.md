@@ -1,3 +1,7 @@
+# 2020-03-12
+
+4 hours: Add displaying a single image view.
+
 # 2020-03-05
 
 5.5 hours: Implement end-to-end photo upload - resize - upload to another bucket pipeline.
