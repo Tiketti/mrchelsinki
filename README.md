@@ -22,11 +22,21 @@ npm start
 
 ## The Google Cloud Platform functionality
 
-Install `gcloud` CLI tool. Then, authenticate:
+Install `gcloud` CLI tool e.g. with brew:
+
+```sh
+brew cask install google-cloud-sdk
+```
+Then, authenticate:
 
 ```sh
 gcloud init
+
+# possibly also needed:
+gcloud auth login
 ```
+
+// TODO: Creating/transfering Google Cloud service keys
 
 Create the input and output buckets.
 

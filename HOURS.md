@@ -1,3 +1,7 @@
+# 2020-03-14
+
+2 hours: Tweak styles; Setup another dev machine; Sharpen setup documentation; Update dependencies
+
 # 2020-03-12
 
 4 hours: Add displaying a single image view.
