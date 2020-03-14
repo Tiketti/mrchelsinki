@@ -1,8 +1,12 @@
 body {
   margin: 0;
+  height: 100%;
+  background-color: #282c34;
 
   a {
+    color: white;
     text-decoration: none;
+
     &:visited {
       color: inherit;
     }
@@ -15,21 +19,21 @@ body {
 }
 
 .App-Contents {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+  color: white;
   flex-direction: column;
   align-items: center;
+  display: flex;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
   padding: 0.2rem;
 }
 
 nav {
-  font-size: 1.5rem;
-  background-color: darkgrey;
+  background: linear-gradient(90deg, #074b5a 0%, #282c34 100%);
+  border-bottom: white 5px solid;
   color: white;
+  font-size: 2rem;
+  font-weight: lighter;
   padding: 20px 0;
 
   ul {
@@ -56,6 +60,12 @@ form.file-upload {
   display: flex;
   flex-direction: column;
   max-width: 80%;
+}
+
+.galleryItem {
+  display: flex;
+  align-self: center;
+  justify-content: center;
 }
 
 img.photo {

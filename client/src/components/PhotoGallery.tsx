@@ -20,7 +20,11 @@ const parseUrlName = (_url: string, thumbnailPrefix: string) => {
 };
 
 const renderImage = (url: string, thumbnailPrefix: string) => (
-  <Link to={parseUrlName(url, thumbnailPrefix)} key={url}>
+  <Link
+    to={parseUrlName(url, thumbnailPrefix)}
+    key={url}
+    className="galleryItem"
+  >
     <img key={url} className="photo" alt="User uploaded content" src={url} />
   </Link>
 );
