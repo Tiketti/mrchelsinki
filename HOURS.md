@@ -1,6 +1,6 @@
 # 2020-03-14
 
-2 hours: Tweak styles; Setup another dev machine; Sharpen setup documentation; Update dependencies
+2.5 hours: Tweak styles; Setup another dev machine; Sharpen setup documentation; Update dependencies; Add error handling
 
 # 2020-03-12
 

@@ -91,7 +91,11 @@ const uploadController = {
     const file = data['file'];
     const fileDetails = await uploader(file, fileOptions);
 
-    await uploadFileToStorage(fileDetails.path);
+    try {
+      await uploadFileToStorage(fileDetails.path);
+    } catch (err) {
+      console.error('Error uploading to Google storage:', { err });
+    }
 
     return h.response(fileDetails).code(200);
   },
