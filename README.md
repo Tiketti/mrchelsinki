@@ -27,6 +27,7 @@ Install `gcloud` CLI tool e.g. with brew:
 ```sh
 brew cask install google-cloud-sdk
 ```
+
 Then, authenticate:
 
 ```sh
@@ -72,14 +73,15 @@ brew install graphicsmagick
 
 ## Environment variables
 
-Fill in the environment variables found in .env.sample file in client](./client/.env.sample), [server](./server/.env.sample), and [gcp directories](./gcp/.env.sample) and make sure they are readable by NodeJS. I personally prefer [direnv](https://direnv.net/) for easy environment variable management.
+Fill in the environment variables found in .env.sample file in [client](./client/.env.sample), [server](./server/.env.sample), and [gcp directories](./gcp/.env.sample) and make sure they are readable by NodeJS. I personally prefer [direnv](https://direnv.net/) for easy environment variable management.
 
 ## TODO
 
 On the roadmap:
 
 - [x] uploading photos by unauthenticated users
-- [ ] creating a thumbnail on upload
+- [x] creating a thumbnail on upload
+- [ ] easy download of full-size photos
 - [ ] caching loaded photos
 - [ ] having photos be associated with a specified event
 - [ ] adding photos to a specified event
