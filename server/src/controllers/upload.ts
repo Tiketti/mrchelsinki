@@ -3,7 +3,8 @@ import { Request, ResponseToolkit } from 'hapi';
 import * as fs from 'fs';
 import * as path from 'path';
 
-const bucketName = process.env.UPLOAD_BUCKET_NAME || 'mrc-helsinki-photos';
+const bucketName =
+  process.env.UPLOAD_BUCKET_NAME || 'mrc-helsinki-photos-input';
 
 interface FileUploaderOption {
   dest: string;

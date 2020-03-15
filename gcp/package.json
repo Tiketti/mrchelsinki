@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watchs",
-    "predeploy": "npm run build && cp package.json ./dist/",
-    "deploy": "gcloud functions deploy generateThumbnail --source=./dist/ --trigger-bucket=$INPUT_BUCKET_NAME --set-env-vars=INPUT_BUCKET_NAME=$INPUT_BUCKET_NAME,OUTPUT_BUCKET_NAME=$OUTPUT_BUCKET_NAME --runtime=nodejs10 --region=europe-west1"
+    "build": "tsc && cp package.json ./dist/",
+    "build:watch": "tsc --watch",
+    "predeploy:generateThumbnail": "npm run build",
+    "predeploy:fixOrientation": "npm run build",
+    "deploy": "npm-run-all --print-name --parallel deploy:*",
+    "deploy:generateThumbnail": "gcloud functions deploy generateThumbnail --source=./dist/ --trigger-bucket=$INPUT_BUCKET_NAME --set-env-vars=INPUT_BUCKET_NAME=$INPUT_BUCKET_NAME,OUTPUT_BUCKET_NAME=$OUTPUT_BUCKET_NAME --retry --runtime=nodejs10 --region=europe-west1",
+    "deploy:fixOrientation": "gcloud functions deploy fixOrientation --source=./dist/ --trigger-bucket=$INPUT_BUCKET_NAME --set-env-vars=INPUT_BUCKET_NAME=$INPUT_BUCKET_NAME,OUTPUT_BUCKET_NAME=$OUTPUT_BUCKET_NAME --retry --runtime=nodejs10 --region=europe-west1"
   },
   "keywords": [],
   "author": "Perttu Haliseva",
@@ -21,6 +24,7 @@
   "devDependencies": {
     "@types/gm": "1.18.7",
     "@types/node": "13.7.7",
+    "npm-run-all": "4.1.5",
     "ts-node": "8.6.2",
     "typescript": "3.8.3"
   }

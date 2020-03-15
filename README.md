@@ -81,6 +81,7 @@ On the roadmap:
 
 - [x] uploading photos by unauthenticated users
 - [x] creating a thumbnail on upload
+- [ ] spinner for uploading photos
 - [ ] easy download of full-size photos
 - [ ] caching loaded photos
 - [ ] having photos be associated with a specified event
