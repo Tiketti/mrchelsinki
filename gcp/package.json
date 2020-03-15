@@ -9,8 +9,8 @@
     "predeploy:generateThumbnail": "npm run build",
     "predeploy:fixOrientation": "npm run build",
     "deploy": "npm-run-all --print-name --parallel deploy:*",
-    "deploy:generateThumbnail": "gcloud functions deploy generateThumbnail --source=./dist/ --trigger-bucket=$INPUT_BUCKET_NAME --set-env-vars=INPUT_BUCKET_NAME=$INPUT_BUCKET_NAME,OUTPUT_BUCKET_NAME=$OUTPUT_BUCKET_NAME --retry --runtime=nodejs10 --region=europe-west1",
-    "deploy:fixOrientation": "gcloud functions deploy fixOrientation --source=./dist/ --trigger-bucket=$INPUT_BUCKET_NAME --set-env-vars=INPUT_BUCKET_NAME=$INPUT_BUCKET_NAME,OUTPUT_BUCKET_NAME=$OUTPUT_BUCKET_NAME --retry --runtime=nodejs10 --region=europe-west1"
+    "deploy:fixOrientation": "gcloud functions deploy fixOrientation --source=./dist/ --trigger-bucket=$INPUT_BUCKET_NAME --set-env-vars=INPUT_BUCKET_NAME=$INPUT_BUCKET_NAME,OUTPUT_BUCKET_NAME=$OUTPUT_BUCKET_NAME --runtime=nodejs10 --region=europe-west1",
+    "deploy:generateThumbnail": "gcloud functions deploy generateThumbnail --source=./dist/ --trigger-bucket=$OUTPUT_BUCKET_NAME --set-env-vars=OUTPUT_BUCKET_NAME=$OUTPUT_BUCKET_NAME,THUMBNAIL_BUCKET_NAME=$THUMBNAIL_BUCKET_NAME --runtime=nodejs10 --region=europe-west1"
   },
   "keywords": [],
   "author": "Perttu Haliseva",

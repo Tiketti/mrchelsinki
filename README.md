@@ -48,13 +48,15 @@ Create the input and output buckets.
 ```sh
 gsutil mb -b on -p mrchelsinki -l europe-north1 gs://mrc-helsinki-photos-input
 gsutil mb -b on -p mrchelsinki -l europe-north1 gs://mrc-helsinki-photos-output
+gsutil mb -b on -p mrchelsinki -l europe-north1 gs://mrc-helsinki-photos-thumb
 gsutil iam ch allUsers:objectViewer gs://mrc-helsinki-photos-input
 gsutil iam ch allUsers:objectViewer gs://mrc-helsinki-photos-output
+gsutil iam ch allUsers:objectViewer gs://mrc-helsinki-photos-thumb
 ```
 
 Add these bucket names to environment variables under names:
 
-`INPUT_BUCKET_NAME` and `OUTPUT_BUCKET_NAME`
+`INPUT_BUCKET_NAME`, `OUTPUT_BUCKET_NAME` and `THUMBNAIL_BUCKET_NAME`
 
 You can deploy a new version of functions with `npm` script:
 

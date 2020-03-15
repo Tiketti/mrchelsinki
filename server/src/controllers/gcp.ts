@@ -5,9 +5,13 @@ const gcpController = {
   listBucketContents: async (request: Request, h: ResponseToolkit) => {
     const storageClient = new gcs.Storage();
     const bucketName = request.params.bucket;
+    const getFilesOptions =
+      request.query.thumbnails == 'true' ? { prefix: 'thumb_' } : {};
 
     try {
-      const [files] = await storageClient.bucket(bucketName).getFiles();
+      const [files] = await storageClient
+        .bucket(bucketName)
+        .getFiles(getFilesOptions);
 
       return h
         .response(
