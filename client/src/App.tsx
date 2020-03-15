@@ -5,9 +5,11 @@ import Photo from './components/Photo';
 import PhotoGallery from './components/PhotoGallery';
 import Upload from './components/Upload';
 
-const thumbnailBucketname = 'mrc-helsinki-photos-output';
+const thumbnailBucketname =
+  process.env.THUMBNAIL_BUCKET_NAME || 'mrc-helsinki-photos-thumb';
+const fullSizeBucketname =
+  process.env.OUTPUT_BUCKET_NAME || 'mrc-helsinki-photos-output';
 const thumbnailFilePrefix = 'thumb_';
-const fullSizeBucketname = 'mrc-helsinki-photos-input';
 
 function App() {
   return (

@@ -34,13 +34,23 @@ const PhotoGallery = (props: PhotoGalleryProps) => {
 
   useEffect(() => {
     const fetchData = async (bucketName: string) => {
-      const response = await axios(`${baseUrl}/storage/${bucketName}/list`);
+      const response = await axios(
+        `${baseUrl}/storage/${bucketName}/list?thumbnails=true`
+      );
 
       setData(response.data);
     };
 
     fetchData(props.thumbnailBucketname);
   }, [props.thumbnailBucketname]);
+
+  if (data.length === 0) {
+    return (
+      <div className="emptyGalleryElement">
+        No photos found. Go upload some?
+      </div>
+    );
+  }
 
   return (
     <div>{data.map(url => renderImage(url, props.thumbnailFilePrefix))}</div>

@@ -1,33 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Axios from 'axios';
+import { LineScalePulseOut } from 'react-pure-loaders';
 
 // TODO: extract this to a config
 const baseUrl = process.env.API_URL || 'http://localhost:5000/api';
 
-const uploadFiles = async (files: FileList | null) => {
-  if (files === null) {
-    return;
-  }
-
-  const formData = new FormData();
-  Array.from(files).forEach((file: File) => {
-    return formData.append('file', file);
-  });
-
-  await Axios.post(`${baseUrl}/upload`, formData, {});
-};
-
 const Upload = () => {
+  const [isLoading, setLoadingState] = useState(false);
+
+  const uploadFiles = async (files: FileList | null) => {
+    if (files === null) {
+      return;
+    }
+
+    setLoadingState(true);
+
+    const formData = new FormData();
+
+    Array.from(files).forEach((file: File) => {
+      return formData.append('file', file);
+    });
+
+    await Axios.post(`${baseUrl}/upload`, formData, {});
+
+    setLoadingState(false);
+  };
+
   return (
     <div>
-      <h1>Upload photos!</h1>
+      <h1>Upload a photo</h1>
       <form className="file-upload">
-        <input
-          type="file"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            uploadFiles(e.target.files)
-          }
-        />
+        {isLoading ? (
+          <LineScalePulseOut loading={true} />
+        ) : (
+          <input
+            type="file"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              uploadFiles(e.target.files)
+            }
+          />
+        )}
       </form>
     </div>
   );

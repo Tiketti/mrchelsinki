@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 const formatPhotoUrl = (url: string) => {
   // TODO: fix bucket name
-  return `https://storage.googleapis.com/mrc-helsinki-photos-input/${url}`;
+  return `https://storage.googleapis.com/mrc-helsinki-photos-output/${url}`;
 };
 
 const Photo = () => {
