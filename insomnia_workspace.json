@@ -1,0 +1,209 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2020-03-15T10:40:56.649Z",
+	"__export_source": "insomnia.desktop.app:v6.3.2",
+	"resources": [
+		{
+			"_id": "wrk_d5d8b8134d49420db6cf51607fe2c174",
+			"created": 1582479290194,
+			"description": "",
+			"modified": 1582479290194,
+			"name": "MRC API",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_3e4a339a535b46f48a99f6d13b0bf3f4",
+			"color": null,
+			"created": 1582479290354,
+			"data": {},
+			"isPrivate": false,
+			"metaSortKey": 1582479290354,
+			"modified": 1582479290354,
+			"name": "New Environment",
+			"parentId": "wrk_d5d8b8134d49420db6cf51607fe2c174",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_180eb9e5865746ee8f5c7e8173e14ca6",
+			"cookies": [],
+			"created": 1582479290358,
+			"modified": 1582479290358,
+			"name": "Default Jar",
+			"parentId": "wrk_d5d8b8134d49420db6cf51607fe2c174",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "req_266b0ac98f784501a4c1f2a7b8671f7d",
+			"authentication": {},
+			"body": {},
+			"created": 1582479300878,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1582479300878,
+			"method": "GET",
+			"modified": 1582965760955,
+			"name": "api",
+			"parameters": [],
+			"parentId": "wrk_d5d8b8134d49420db6cf51607fe2c174",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:5000/api",
+			"_type": "request"
+		},
+		{
+			"_id": "req_f361884966e441189f362593d8bb60c8",
+			"authentication": {},
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"fileName": "/Users/perttu/Dropbox/Camera Uploads/2020-03-07 12.34.32-1.jpg",
+						"id": "pair_044e9bafd7fc456d97d1707b5270322e",
+						"name": "file",
+						"type": "file",
+						"value": ""
+					}
+				]
+			},
+			"created": 1582480141102,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_72d941039d3d448c8bfaf50d152c2b97",
+					"name": "Content-Type",
+					"value": "multipart/form-data"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1567903667469,
+			"method": "POST",
+			"modified": 1583953090148,
+			"name": "api/upload",
+			"parameters": [],
+			"parentId": "wrk_d5d8b8134d49420db6cf51607fe2c174",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:5000/api/upload",
+			"_type": "request"
+		},
+		{
+			"_id": "req_b146111869904f51aa4801a713040377",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": ""
+			},
+			"created": 1582572654560,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_72d941039d3d448c8bfaf50d152c2b97",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1560615850764.5,
+			"method": "GET",
+			"modified": 1582965754220,
+			"name": "api/storage/list",
+			"parameters": [],
+			"parentId": "wrk_d5d8b8134d49420db6cf51607fe2c174",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:5000/api/storage/list",
+			"_type": "request"
+		},
+		{
+			"_id": "req_8978337c58814b19907c5532fa36651f",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"name\": \"mrc-helsinki-photos-test\"\n}"
+			},
+			"created": 1582574007912,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_72d941039d3d448c8bfaf50d152c2b97",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1556971942412.25,
+			"method": "POST",
+			"modified": 1583436253890,
+			"name": "api/storage/create",
+			"parameters": [],
+			"parentId": "wrk_d5d8b8134d49420db6cf51607fe2c174",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:5000/api/storage/create",
+			"_type": "request"
+		},
+		{
+			"_id": "req_2d468cfb29e445c1966812a0c6d0116e",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": ""
+			},
+			"created": 1582700157202,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_72d941039d3d448c8bfaf50d152c2b97",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1558793896588.375,
+			"method": "GET",
+			"modified": 1583992641968,
+			"name": "api/storage/{bucket}/list",
+			"parameters": [],
+			"parentId": "wrk_d5d8b8134d49420db6cf51607fe2c174",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:5000/api/storage/mrc-helsinki-photos-output/list",
+			"_type": "request"
+		},
+		{
+			"_id": "env_0a14fe81c2b14cce8004b9a659bcca98",
+			"color": null,
+			"created": 1582649866928,
+			"data": {},
+			"isPrivate": false,
+			"metaSortKey": 1582649866928,
+			"modified": 1582649875694,
+			"name": "dev",
+			"parentId": "env_3e4a339a535b46f48a99f6d13b0bf3f4",
+			"_type": "environment"
+		}
+	]
+}
