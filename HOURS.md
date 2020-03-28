@@ -1,3 +1,5 @@
+(Reported 2020-03-28)
+
 # 2020-03-15
 
 10 hours: Debug and improve bucket upload process; Improve gallery functionality and styles; Troubleshoot GCP memory limits
