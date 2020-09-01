@@ -7,7 +7,7 @@ const formatPhotoUrl = (url: string) => {
 };
 
 const Photo = () => {
-  const { url } = useParams();
+  const { url } = useParams<{ url: string}>();
 
   return (
     <>
